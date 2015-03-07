@@ -3,6 +3,7 @@
 	<head>
 		<title>AJAX(javascript)exemple</title>
 		<meta charset="utf-8">
+		<script src="jquery-2.1.1.js"></script>
 	</head>
 </html>
 <body>
@@ -51,7 +52,26 @@
 			req.send(null);
 			statusElem.innerHTML= 'Ожидаю ответа сервра...';
 		}
+		
+		function jqvajax()
+		{
+			$.getJSON('test.js', 
+				function(data)
+				{
+					var items = [];
+					$.each(data, function(key, val) 
+					{
+						items.push('<li id="'+key + '">' + val + '</li>');
+						
+					});
+					$('<ul/>',{'class' : 'my-new-list',
+								html :items.join('')
+								}).appendTo('body');
+				});
+		}
 	</script>
 	<input value="Голосовать!" onclick="vote()" type="button" />
 	<div id="vote_status">Здесь будет ответ сервера</div>
+	<input value="jqueryAJAX" onclick="jqvajax()" type = "button" />
+	
 </body>
