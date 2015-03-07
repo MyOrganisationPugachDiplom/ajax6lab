@@ -69,9 +69,55 @@
 								}).appendTo('body');
 				});
 		}
+		
+		function LoadLog()
+		{
+			$.post('loadscript.php',
+			{
+				
+			},
+			CallBackLoading
+			);
+		
+		}
+		
+		function CallBackLoading(date)
+		{
+			$('#persent').text(date);
+			if(data="100%")
+			{
+				LoadFromBase(0,99,'asis');
+			}
+			else
+			{
+				LoadLog();
+			}
+			
+		}
+		
+		function LoadFromBase(begstring, endstring, sort)
+		{
+			$.post('loadfrombase.php',
+				{
+					stringbegin: begstring,
+					stringend : endstring,
+					sort: 'asis'
+				},
+				ExchengeStrings			
+		}
+		
+		function ExchengeStrings(date)
+		{
+			$('#logdate').text("");
+			$('#logdate').text("date");
+		}
+
 	</script>
 	<input value="Голосовать!" onclick="vote()" type="button" />
 	<div id="vote_status">Здесь будет ответ сервера</div>
 	<input value="jqueryAJAX" onclick="jqvajax()" type = "button" />
+	<input value "ReadLogFile!" onclick="LoadLog" type = "button" />
+	<div id="persent"></div>
+	<div id="logdate"></div>
 	
 </body>
