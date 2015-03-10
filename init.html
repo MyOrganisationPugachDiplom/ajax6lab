@@ -103,20 +103,20 @@
 					stringend : endstring,
 					sort: 'asis'
 				},
-				ExchengeStrings			
+				ExchengeStrings	);		
 		}
 		
 		function ExchengeStrings(date)
 		{
 			$('#logdate').text("");
-			$('#logdate').text("date");
+			$('#logdate').text(date);
 		}
 
 	</script>
 	<input value="Голосовать!" onclick="vote()" type="button" />
 	<div id="vote_status">Здесь будет ответ сервера</div>
 	<input value="jqueryAJAX" onclick="jqvajax()" type = "button" />
-	<input value "ReadLogFile!" onclick="LoadLog" type = "button" />
+	<input value="ReadLogFile!" onclick="LoadLog()" type = "button" />
 	<div id="persent"></div>
 	<div id="logdate"></div>
 	
