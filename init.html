@@ -78,19 +78,32 @@
 			},
 			CallBackLoading
 			);
-		
+			
+			$.post('persent.php',
+			{
+				
+			},
+			CallBackLoading
+			);	
 		}
 		
-		function CallBackLoading(date)
+		
+		
+		function CallBackLoading(data)
 		{
-			$('#persent').text(date);
+			$('#persent').text(data);
 			if(data=="100")
 			{
 				LoadFromBase(0,99,'asis');
 			}
 			else
 			{
-				LoadLog();
+				$.post('persent.php',
+				{
+					
+				},
+				CallBackLoading
+				);
 			}
 			
 		}
