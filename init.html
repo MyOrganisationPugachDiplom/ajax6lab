@@ -75,7 +75,7 @@
 		
 		function LoadLog()
 		{
-			$.post('CountOfString.php',
+			$.get('CountOfString.php',
 			{
 				
 			},
@@ -91,9 +91,15 @@
 		
 		function LoadToBase(data)
 		{
-			$.post('loadscript.php',
+			//$.post('loadscript.php',
+			//{
+		//		"string" : "data"
+		//	},
+		//	CallBackLoading
+		//	);
+			$.get('loadscript.php',
 			{
-				string : data
+				"string" : data
 			},
 			CallBackLoading
 			);

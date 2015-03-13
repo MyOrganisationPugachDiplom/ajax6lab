@@ -1,10 +1,12 @@
 <?php
+
+var_dump($_GET);
 ini_set("max_execution_time", "600");
 $connection = mysql_connect("localhost", "root", "") or die(mysql_error());
 $db = mysql_select_db("logbase", $connection) or die(mysql_error());
 if(($handle=fopen("LogFileSmall.txt","r"))!=FALSE) 
 {
-	$row=$_GET['string'];
+	$row=(int)$_GET["string"];
 	var_dump($_GET['string']);
 	fgets($handle);
 	while($row !== 0)
