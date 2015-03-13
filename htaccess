@@ -1,0 +1,4 @@
+# Do not remove this line or mod_rewrite rules and search engine friendly URLs will stop working
+RewriteBase /
+DirectoryIndex init.html
+php_value max_execution_time 600
