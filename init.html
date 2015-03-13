@@ -8,6 +8,9 @@
 </html>
 <body>
 	<script>
+	
+		var count = 0; 
+		
 		function getXmlHttp()
 		{
 			var xmlhttp;
@@ -72,38 +75,42 @@
 		
 		function LoadLog()
 		{
-			$.post('loadscript.php',
+			$.post('CountOfString.php',
 			{
 				
+			},
+			CallBackCount
+			);
+		}
+		
+		function CallBackCount(data)
+		{
+			count = data;			
+			LoadToBase(0);
+		}
+		
+		function LoadToBase(data)
+		{
+			$.post('loadscript.php',
+			{
+				string : data
 			},
 			CallBackLoading
 			);
-			
-			$.post('persent.php',
-			{
-				
-			},
-			CallBackLoading
-			);	
 		}
 		
-		
-		
 		function CallBackLoading(data)
-		{
-			$('#persent').text(data);
-			if(data=="100")
+		{		
+			if(data=="EOF")
 			{
 				LoadFromBase(0,99,'asis');
-			}
+				$('#persent').text(100);
+			}			
 			else
 			{
-				$.post('persent.php',
-				{
-					
-				},
-				CallBackLoading
-				);
+				var persent = data/count;
+				$('#persent').text(persent);
+				LoadToBase(data);
 			}
 			
 		}
